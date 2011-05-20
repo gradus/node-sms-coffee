@@ -8,10 +8,10 @@ app.configure( ->
 )
 
 app.post('/', (req, res) ->
-  callerID = req.body['inboundSMSMessageNotification']['inboundSMSMessage']['senderAddress']
-  message = req.body['inboundSMSMessageNotification']['inboundSMSMessage']['message']
-  complete_msg = "callerID: #{callerID} said:#{message}"
-	post_data = querystring.stringify({'address' : '8033603069', 'message': complete_msg})
+	post_data = querystring.stringify({
+    'address' : '8033603069'
+    'message': "callerID: #{req.body['inboundSMSMessageNotification']['inboundSMSMessage']['senderAddress']} said: #{req.body['inboundSMSMessageNotification']['inboundSMSMessage']['message']}"
+  })
 	post_options = {
 		host: 'api.smsified.com'
 		port: '80'
@@ -26,7 +26,7 @@ app.post('/', (req, res) ->
 	post_req = http.request(post_options, (res) ->
 		res.setEncoding 'utf8'
   )
-	post_req.write post_data
+	post_req.write post_data 
 	post_req.end()
 	res.end()
 )
