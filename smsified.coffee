@@ -10,10 +10,9 @@ app.configure( ->
 app.post('/', (req, res) ->
   callerID = req.body['inboundSMSMessageNotification']['inboundSMSMessage']['senderAddress']
   message = req.body['inboundSMSMessageNotification']['inboundSMSMessage']['message']
-  my_number = '8033603069'
   complete_msg = "callerID: #{callerID} said:#{message}"
 	post_data = querystring.stringify({
-		'address' : my_number
+		'address' : '8033603069'
 		'message': complete_msg
 	})
 	post_options = {
