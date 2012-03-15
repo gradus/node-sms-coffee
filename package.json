@@ -1,0 +1,14 @@
+{
+  "name": "node-sms",
+  "description": "SMS text forwarding for SMSified",
+  "version": "0.0.1",
+  "homepage": "http://#",
+  "author": "Kris Windham",
+  "private": true,
+  "dependencies": {
+    "querystring": "*",
+    "express": "0.3.x",
+  },
+  "engines": { "node": "0.4 || 0.6 " }
+}
+
