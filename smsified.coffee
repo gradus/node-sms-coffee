@@ -9,18 +9,18 @@ app.configure( ->
 
 app.post('/', (req, res) ->
 	post_data = querystring.stringify({
-    'address' : '8033603069'
+    'address' : '5555555555' #your phone number here
     'message': "callerID: #{req.body['inboundSMSMessageNotification']['inboundSMSMessage']['senderAddress']} said: #{req.body['inboundSMSMessageNotification']['inboundSMSMessage']['message']}"
   })
 	post_options = {
 		host: 'api.smsified.com'
 		port: '80'
-		path: '/v1/smsmessaging/outbound/8436363155/requests'
+		path: '/v1/smsmessaging/outbound/5555555555/requests' # replace number with your smsified number
 		method: 'POST'
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded'
 			'Content-Length': post_data.length
-			'Authorization':"Basic "+ new Buffer('gradus' + ":" + "bratya147").toString('base64')
+			'Authorization':"Basic "+ new Buffer('username' + ":" + "password").toString('base64') # enter your username and password for smsified
 		}
 	}
 	post_req = http.request(post_options, (res) ->
@@ -30,4 +30,4 @@ app.post('/', (req, res) ->
 	post_req.end()
 	res.end()
 )
-app.listen(10085)
+app.listen(10085) #you might want to change this port to port for nodester
